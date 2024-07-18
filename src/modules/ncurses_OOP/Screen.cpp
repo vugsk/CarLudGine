@@ -8,6 +8,7 @@
 
 namespace ncurses_oop
 {
+	Screen *Screen::ptrWindow = nullptr;
 
 	Screen *Screen::init(size_X width, size_Y height)
 	{
@@ -38,6 +39,12 @@ namespace ncurses_oop
 	[[nodiscard]] size_Y Screen::getHeight() const
 	{
 		return _height;
+	}
+
+	IWindow *Screen::createWindow(size_X x, size_Y y, size_X width, size_Y height)
+	{
+		return new Window(width, height, x, y,
+						  newwin(height, width, y, x));
 	}
 
 	Screen::Screen(size_X width, size_Y height)

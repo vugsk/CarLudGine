@@ -18,13 +18,8 @@ namespace ncurses_oop
 		void print(const char *format, ...) const;
 		void mvprint(size_X x, size_Y y, const char *format, ...) const;
 
-		template<typename T = IWindow>
-		[[nodiscard]] T *createWindow(size_X x, size_Y y, size_X width,
-									  size_Y height)
-		{
-			return new Window(width, height, x, y,
-							  newwin(height, width, y, x));
-		}
+		[[nodiscard]] IWindow *createWindow(size_X x, size_Y y, size_X width,
+									  size_Y height);
 
 		[[nodiscard]] size_X getWidth() const;
 		[[nodiscard]] size_Y getHeight() const;
@@ -38,9 +33,6 @@ namespace ncurses_oop
 		size_Y _height;
 		WINDOW *_window;
 	};
-
-
-Screen *Screen::ptrWindow = nullptr;
 
 }
 #endif //CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_SCREEN_HPP
