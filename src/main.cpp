@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <memory>
 
 #include "Window.hpp"
 #include "Screen.hpp"

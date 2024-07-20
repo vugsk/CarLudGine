@@ -12,6 +12,10 @@ namespace ncurses_oop
 	{
 	public:
 		~Screen();
+		Screen(const Screen&) = delete;
+		Screen(Screen&&) = delete;
+		Screen& operator=(const Screen&) = delete;
+		Screen& operator=(Screen&&) = delete;
 
 		static Screen *init(size_X width = 0, size_Y height = 0);
 

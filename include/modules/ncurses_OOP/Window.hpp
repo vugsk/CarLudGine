@@ -14,6 +14,10 @@ namespace ncurses_oop
 	public:
 		Window(size_X width, size_Y height, size_X x, size_Y y, WINDOW *window);
 		~Window() override;
+		Window(const Window&) = delete;
+		Window(Window&&) = delete;
+		Window& operator=(const Window&) = delete;
+		Window& operator=(Window&&) = delete;
 
 		[[nodiscard]] IWindow *createWindow(size_X x, size_Y y, size_X width,
 		                                    size_Y height) const final;
