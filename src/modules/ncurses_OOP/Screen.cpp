@@ -12,7 +12,9 @@ namespace ncurses_oop
 
 	Screen *Screen::init(size_X width, size_Y height)
 	{
-		return ptrWindow ?: new Screen(width, height);
+		if (!ptrWindow)
+			ptrWindow = new Screen(width, height);
+		return ptrWindow;
 	}
 
 	void Screen::print(const char *format, ...) const

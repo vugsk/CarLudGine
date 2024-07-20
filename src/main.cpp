@@ -11,7 +11,7 @@ using ncurses_oop::IWindow;
 
 int main()
 {
-	auto wt = Screen::init();
+	std::unique_ptr<IWindow> wt = Screen::init();
 	wt->print("%d %d", wt->getWidth(), wt->getHeight());
 
 	auto win = wt->createWindow(10, 5, 50, 10);

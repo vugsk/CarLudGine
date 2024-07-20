@@ -14,11 +14,13 @@ namespace ncurses_oop
 	{
 	public:
 		virtual void print(const char *format, ...) const = 0;
-		virtual void mvprint(size_X x, size_Y y,
-							 const char *format, ...) const = 0;
-		[[nodiscard]] virtual IWindow *createWindow(size_X x, size_Y y,
-													size_X width,
-		                                            size_Y height) const = 0;
+
+		virtual void
+			mvprint(size_X x, size_Y y, const char *format, ...) const = 0;
+
+		[[nodiscard]] virtual std::unique_ptr<IWindow>
+			createWindow(size_X x, size_Y y, size_X width,
+						 size_Y height) const = 0;
 
 		[[nodiscard]] virtual size_X getWidth() const = 0;
 		[[nodiscard]] virtual size_Y getHeight() const = 0;

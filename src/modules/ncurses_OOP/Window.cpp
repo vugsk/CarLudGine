@@ -9,9 +9,8 @@ namespace ncurses_oop
 
 	Window::Window(size_X width, size_Y height, size_X x, size_Y y,
 				   WINDOW *window)
-		: _width(width), _height(height)
-		, _x(x + width), _y(y + height)
-		, _window(window)
+		: _width(width), _height(height), _x(x + width)
+		, _y(y + height), _window(window)
 	{
 		box(_window, 0, 0);
 		wrefresh(_window);
@@ -23,9 +22,7 @@ namespace ncurses_oop
 	}
 
 	[[nodiscard]] std::unique_ptr<IWindow>
-	    Window::createWindow(size_X x,
-							 size_Y y,
-							 size_X width,
+	    Window::createWindow(size_X x, size_Y y, size_X width,
 							 size_Y height) const
 	{
 		return std::make_unique<Window>(width, height, x, y,
