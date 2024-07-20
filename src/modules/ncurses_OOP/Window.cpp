@@ -22,12 +22,15 @@ namespace ncurses_oop
 		delwin(_window);
 	}
 
-	[[nodiscard]] IWindow *Window::createWindow(size_X x, size_Y y,
-												size_X width,
-												size_Y height) const
+	[[nodiscard]] std::unique_ptr<IWindow>
+	    Window::createWindow(size_X x,
+							 size_Y y,
+							 size_X width,
+							 size_Y height) const
 	{
-		return new Window(width, height, x, y, newwin(height, width,
-											   _y - y, _x - x));
+		return std::make_unique<Window>(width, height, x, y,
+										newwin(height, width,
+											          _y - y, _x - x));
 	}
 
 	void Window::print(const char *format, ...) const

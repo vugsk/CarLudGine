@@ -14,7 +14,7 @@ int main()
 	Screen* wt = Screen::init();
 	wt->print("%d %d", wt->getWidth(), wt->getHeight());
 
-	IWindow* win = wt->createWindow(10, 5, 50, 10);
+	auto win = wt->createWindow(10, 5, 50, 10);
 	win->print("%d %d", win->getWidth(), win->getHeight());
 
 	getch();

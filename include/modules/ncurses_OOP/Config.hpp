@@ -6,6 +6,7 @@
 #define CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_CONFIG_HPP
 
 #include <ncurses.h>
+#include <memory>
 
 namespace ncurses_oop
 {

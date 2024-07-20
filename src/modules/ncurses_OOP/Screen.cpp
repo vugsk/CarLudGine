@@ -41,10 +41,11 @@ namespace ncurses_oop
 		return _height;
 	}
 
-	IWindow *Screen::createWindow(size_X x, size_Y y, size_X width, size_Y height)
+	std::unique_ptr<IWindow> Screen::createWindow(size_X x, size_Y y, size_X width,
+										  size_Y height)
 	{
-		return new Window(width, height, x, y,
-						  newwin(height, width, y, x));
+		return std::make_unique<Window>(width, height, x, y,
+										newwin(height, width, y, x));
 	}
 
 	Screen::Screen(size_X width, size_Y height)

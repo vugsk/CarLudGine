@@ -22,8 +22,9 @@ namespace ncurses_oop
 		void print(const char *format, ...) const;
 		void mvprint(size_X x, size_Y y, const char *format, ...) const;
 
-		[[nodiscard]] IWindow *createWindow(size_X x, size_Y y, size_X width,
-									  size_Y height);
+		[[nodiscard]] std::unique_ptr<IWindow> createWindow(size_X x, size_Y y,
+															size_X width,
+															size_Y height);
 
 		[[nodiscard]] size_X getWidth() const;
 		[[nodiscard]] size_Y getHeight() const;

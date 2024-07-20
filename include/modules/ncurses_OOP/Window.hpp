@@ -19,8 +19,9 @@ namespace ncurses_oop
 		Window& operator=(const Window&) = delete;
 		Window& operator=(Window&&) = delete;
 
-		[[nodiscard]] IWindow *createWindow(size_X x, size_Y y, size_X width,
-		                                    size_Y height) const final;
+		[[nodiscard]] std::unique_ptr<IWindow> createWindow(size_X x, size_Y y,
+															size_X width,
+															size_Y height) const final;
 		void print(const char *format, ...) const final;
 		void mvprint(size_X x, size_Y y, const char *format, ...) const final;
 
