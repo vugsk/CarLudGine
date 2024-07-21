@@ -24,12 +24,8 @@ namespace ncurses_oop
 
 	Screen::Screen(Screen&& other) noexcept
 		:Output(_window), CreateBasicBox<InterfaceBasicBox>(0, 0)
-	    , _width(0), _height(0), _window(nullptr)
+	    , _width(other._width), _height(other._height), _window(other._window)
     {
-        _width = other._width;
-	    _height = other._height;
-	    _window = other._window;
-
 	    other._width = 0;
 	    other._height = 0;
 	    other._window = nullptr;
