@@ -28,7 +28,7 @@ namespace ncurses_oop
 	template<typename To, typename From>
 	constexpr To convert(From&& from)
 	{
-		return static_cast<To>(from);
+		return static_cast<To>(std::forward<From>(from));
 	}
 
 }

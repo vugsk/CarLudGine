@@ -12,19 +12,19 @@ namespace ncurses_oop
 		return std::move(ptr);
 	}
 
-	[[nodiscard]] constexpr uint32_t Screen::getWidth() const
+	[[nodiscard]] uint32_t Screen::getWidth() const
 	{
 		return _width;
 	}
 
-	[[nodiscard]] constexpr uint32_t Screen::getHeight() const
+	[[nodiscard]] uint32_t Screen::getHeight() const
 	{
 		return _height;
 	}
 
 	Screen::Screen(Screen&& other) noexcept
-		: _width(0), _height(0), _window(nullptr)
-		, Output(_window), CreateBasicBox<InterfaceBasicBox>(0, 0)
+		:Output(_window), CreateBasicBox<InterfaceBasicBox>(0, 0)
+	    , _width(0), _height(0), _window(nullptr)
     {
         _width = other._width;
 	    _height = other._height;
