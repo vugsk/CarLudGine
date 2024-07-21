@@ -32,7 +32,7 @@ namespace ncurses_oop
 										newwin(height, width, y, x));
 	}
 
-	Screen::Screen(size_X width, size_Y height)
+	Screen::Screen(size_X width, size_Y height) : Output(stdscr)
 	{
 		initscr();
 		_window = stdscr;

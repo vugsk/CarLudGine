@@ -11,11 +11,7 @@ using ncurses_oop::IWindow;
 int main()
 {
 	Screen* wt = Screen::init();
-//	wt->print("% %", wt->getWidth(), wt->getHeight());
-	wt->movePrint(10, 5, wt->getWidth(), wt->getHeight());
-
-//	auto win = wt->createWindow(10, 5, 50, 10);
-//	win->print("%d %d", win->getWidth(), win->getHeight());
+	wt->print(wt->getWidth(), wt->getHeight());
 
 	getch();
 

@@ -10,6 +10,7 @@ add_library(${PROJECT_NAME} SHARED
     ../../../include/modules/ncurses_OOP/InterfaceWindow.hpp
     ../../../include/modules/ncurses_OOP/Window.hpp
     ../../../include/modules/ncurses_OOP/Config.hpp
+    ../../../include/modules/ncurses_OOP/Output.hpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC
