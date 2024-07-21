@@ -1,11 +1,8 @@
 
-#include "Window.hpp"
 #include "Screen.hpp"
 
 using ncurses_oop::Screen;
-using ncurses_oop::Window;
-using ncurses_oop::InterfaceBasicBox;
-using ncurses_oop::Output;
+using ncurses_oop::windowPtr;
 
 int main()
 {
@@ -13,7 +10,7 @@ int main()
 	Screen wt(Screen::init());
 	wt.print(wt.getWidth(), wt.getHeight());
 
-	auto io = wt.create({50, 5}, {5, 5});
+	windowPtr io = wt.create({50, 5}, {5, 5});
 
 	getch();
 

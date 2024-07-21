@@ -23,12 +23,6 @@ namespace ncurses_oop
 			delwin(_window);
 		}
 
-		template<typename T>
-		constexpr void print(T format)
-		{
-			addString(format);
-		}
-
 		template<typename T> requires std::integral<T> || std::floating_point<T>
 		constexpr void addString(T value) const
 		{
@@ -38,6 +32,12 @@ namespace ncurses_oop
 		constexpr void addString(const std::string& value) const
 		{
 			waddstr(_window, value.c_str());
+		}
+
+		template<typename T>
+		constexpr void print(T format)
+		{
+			addString(format);
 		}
 
 		template<typename T, typename ...Args>
@@ -50,15 +50,16 @@ namespace ncurses_oop
 		}
 
 		template<typename ...Args>
-		constexpr void movePrint(const uint32_t x,
-		                                const uint32_t y, Args...args)
+		constexpr void movePrint(const uint32_t x, const uint32_t y,
+								 Args...args)
 		{
 			wmove(_window, static_cast<int>(y), static_cast<int>(x));
 			print(args...);
 		}
-		
+
 	private:
 		WINDOW*& _window;
+
 	};
 
 }

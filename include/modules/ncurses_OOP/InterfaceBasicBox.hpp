@@ -17,6 +17,8 @@ namespace ncurses_oop
 		[[nodiscard]] virtual constexpr uint32_t getHeight() const = 0;
 	};
 
+	using windowPtr = std::unique_ptr<InterfaceBasicBox>;
+
 }
 
 #endif //CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_INTERFACEBASICBOX_HPP

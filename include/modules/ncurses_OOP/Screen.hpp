@@ -6,13 +6,12 @@
 #include "Output.hpp"
 #include "CreateBasicBox.hpp"
 #include "InterfaceBasicBox.hpp"
-#include "Window.hpp"
 
 namespace ncurses_oop
 {
 
 	class Screen
-		: public Output, public CreateBasicBox<InterfaceBasicBox, Window>
+		: public Output, public CreateBasicBox<InterfaceBasicBox>
 	{
 	public:
 		~Screen();
@@ -23,8 +22,8 @@ namespace ncurses_oop
 
 		static Screen&& init(uint32_t width = 0, uint32_t height = 0);
 
-		[[nodiscard]] uint32_t getWidth() const;
-		[[nodiscard]] uint32_t getHeight() const;
+		[[nodiscard]] constexpr uint32_t getWidth() const;
+		[[nodiscard]] constexpr uint32_t getHeight() const;
 
 	private:
 		explicit Screen(uint32_t width = 0, uint32_t height = 0);

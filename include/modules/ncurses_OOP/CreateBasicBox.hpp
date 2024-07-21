@@ -6,10 +6,12 @@
 #define CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_CREATEBASICBOX_HPP
 
 #include "Config.hpp"
+#include "Window.hpp"
 
 namespace ncurses_oop
 {
-	template<typename I, typename C>
+
+	template<typename I, typename C = Window>
 	class CreateBasicBox
 	{
 	public:
