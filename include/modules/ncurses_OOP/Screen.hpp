@@ -4,37 +4,36 @@
 
 #include "Config.hpp"
 #include "Output.hpp"
+#include "CreateBasicBox.hpp"
+#include "InterfaceBasicBox.hpp"
+#include "Window.hpp"
 
 namespace ncurses_oop
 {
-	class IWindow;
 
-	class Screen : public Output
+	class Screen
+		: public Output, public CreateBasicBox<InterfaceBasicBox, Window>
 	{
 	public:
 		~Screen();
-		Screen(const Screen&) = delete;
-		Screen(Screen&&) = delete;
-		Screen& operator=(const Screen&) = delete;
-		Screen& operator=(Screen&&) = delete;
+		Screen(const Screen&) noexcept = delete;
+		Screen& operator=(const Screen&) noexcept = delete;
+		Screen(Screen&& other) noexcept;
+		Screen& operator=(Screen&& other) noexcept;
 
-		static Screen *init(size_X width = 0, size_Y height = 0);
+		static Screen&& init(uint32_t width = 0, uint32_t height = 0);
 
-		[[nodiscard]] std::unique_ptr<IWindow>
-			createWindow(size_X x, size_Y y, size_X width, size_Y height);
-
-		[[nodiscard]] int getWidth() const;
-		[[nodiscard]] int getHeight() const;
+		[[nodiscard]] uint32_t getWidth() const;
+		[[nodiscard]] uint32_t getHeight() const;
 
 	private:
-		explicit Screen(size_X width = 0, size_Y height = 0);
+		explicit Screen(uint32_t width = 0, uint32_t height = 0);
 
-		static Screen *ptrWindow;
-
-		size_X _width;
-		size_Y _height;
+		uint32_t _width;
+		uint32_t _height;
 		WINDOW *_window;
 	};
 
 }
+
 #endif //CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_SCREEN_HPP

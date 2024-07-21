@@ -5,24 +5,31 @@
 #ifndef CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_CONFIG_HPP
 #define CARLUDGINE_INCLUDE_MODULES_NCURSES_OOP_CONFIG_HPP
 
+#include <functional>
 #include <ncurses.h>
 #include <memory>
 
 namespace ncurses_oop
 {
 
-	using size_X = int;
-	using size_Y = int;
+	using coordinates = std::pair<uint32_t, uint32_t>;
+	using dimensions = std::pair<uint32_t, uint32_t>;
 
-	template<typename T1, typename T2>
-	void printWindow(WINDOW* window, const char* format, va_list args,
-					 T1 x = 0, T2 y = 0)
+	template<typename T>
+	concept IsNumber = std::integral<T> || std::floating_point<T>;
+
+
+	template<typename To, typename From>
+	constexpr To convert(const From& from)
 	{
-		wmove(window, y, x);
-		vw_printw(window, format, args);
-		wrefresh(window);
+		return static_cast<To>(from);
 	}
 
+	template<typename To, typename From>
+	constexpr To convert(From&& from)
+	{
+		return static_cast<To>(from);
+	}
 
 }
 
