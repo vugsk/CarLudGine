@@ -56,7 +56,7 @@ namespace ncurses_oop
 			wmove(_window, static_cast<int>(y), static_cast<int>(x));
 			print(args...);
 		}
-	protected:
+		
 	private:
 		WINDOW*& _window;
 	};

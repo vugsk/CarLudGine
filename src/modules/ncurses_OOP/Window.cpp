@@ -9,9 +9,8 @@ namespace ncurses_oop
 
 	Window::Window(size_X width, size_Y height, size_X x, size_Y y,
 				   WINDOW *window)
-		: _width(width), _height(height), _x(x + width)
-		, _y(y + height), _window(window)
-		, Output(window)
+		: Output(window), _width(width), _height(height)
+		, _x(x + width), _y(y + height), _window(window)
 	{
 		box(_window, 0, 0);
 		wrefresh(_window);
